@@ -1,0 +1,332 @@
+.containerWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.darkMode body {
+  background-color: var(--background-dark);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2.5rem;
+  border-bottom: 1px solid var(--border-light);
+  background-color: var(--card-bg-light);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-light);
+}
+
+.logoIcon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--primary);
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navLinks {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navLinks {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-light);
+  transition: color 0.3s;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: var(--primary);
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--text-muted-light);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.iconButton:hover {
+  background-color: var(--primary-light-10);
+  color: var(--primary);
+}
+
+.profileAvatarSm {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 2.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.notificationsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .notificationsContainer {
+    grid-template-columns: 1fr 300px;
+  }
+}
+
+.notificationsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.pageTitle {
+  font-size: 2.25rem;
+  font-weight: 900;
+}
+
+.markAllRead {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.markAllRead:hover {
+  text-decoration: underline;
+}
+
+.notificationCard {
+  background-color: var(--card-bg-light);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  border: 1px solid var(--border-light);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.notificationCard:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.notificationIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.iconGroup {
+  background-color: #3b82f6;
+}
+
+.iconRequest {
+  background-color: #10b981;
+}
+
+.iconReminder {
+  background-color: #f59e0b;
+}
+
+.iconSystem {
+  background-color: #6366f1;
+}
+
+.notificationIcon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.notificationContent {
+  flex-grow: 1;
+}
+
+.notificationTitle {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.notificationMessage {
+  font-size: 0.875rem;
+  color: var(--text-muted-light);
+  margin: 0;
+}
+
+.notificationTime {
+  font-size: 0.75rem;
+  color: var(--text-muted-light);
+  margin-top: 0.5rem;
+}
+
+.unreadIndicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: var(--primary);
+  border-radius: 50%;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.preferencesSidebar {
+  background-color: var(--card-bg-light);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-light);
+  height: fit-content;
+}
+
+.sidebarTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.preferenceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.preferenceItem:last-child {
+  border-bottom: none;
+}
+
+.preferenceLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: var(--primary);
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+.darkMode .header,
+.darkMode .main {
+  background-color: var(--background-dark);
+  border-bottom: 1px solid var(--border-dark);
+}
+.darkMode .navLinks a,
+.darkMode .iconButton,
+.darkMode .logoText,
+.darkMode .pageTitle,
+.darkMode .notificationTitle,
+.darkMode .sidebarTitle {
+  color: var(--text-dark-primary);
+}
+.darkMode .navLinks a:hover,
+.darkMode .navLinks a.active,
+.darkMode .iconButton:hover {
+  color: var(--primary);
+}
+.darkMode .notificationCard,
+.darkMode .preferencesSidebar {
+  background-color: var(--card-bg-dark);
+  border: 1px solid var(--border-dark);
+}
+.darkMode .notificationMessage,
+.darkMode .preferenceLabel,
+.darkMode .notificationTime {
+  color: var(--text-dark-secondary);
+}

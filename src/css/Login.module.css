@@ -1,0 +1,247 @@
+:root {
+ 
+}
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.brandingSection {
+  display: none;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(19, 127, 236, 0.1);
+  padding: 3rem;
+}
+.darkMode .brandingSection {
+  background-color: var(--surface-dark);
+}
+
+.brandingContent {
+  text-align: center;
+}
+
+.logoContainer {
+  display: inline-block;
+  padding: 1rem;
+  background-color: var(--background-light);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.logoSvg {
+  height: 4rem;
+  width: 4rem;
+  color: var(--primary-color);
+}
+.darkMode svg {
+  background-color: var(--background-dark);
+}
+.brandingTitle {
+  margin-top: 1.5rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-light-primary);
+}
+
+.brandingSubtitle {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+  color: var(--text-light-secondary);
+}
+.darkMode .brandingTitle {
+  color: var(--text-dark-primary);
+}
+
+.loginSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: var(--background-light);
+}
+.darkMode .loginSection {
+  background-color: var(--background-dark);
+}
+.loginContainer {
+  width: 100%;
+  max-width: 28rem;
+}
+
+.loginHeader {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.loginTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-light-primary);
+}
+
+.loginSubtitle {
+  margin-top: 0.5rem;
+  color: var(--text-light-secondary);
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-light-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  background-color: var(--input-bg-light);
+  color: var(--text-light-primary);
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+.darkMode .formInput {
+  background-color: var(--input-bg-dark);
+  border: 1px solid var(--input-border-dark);
+  color: var(--text-dark-primary);
+}
+.darkMode .brandingTitle,
+.darkMode .loginTitle,
+.darkMode .formLabel,
+.darkMode .signupText {
+  color: var(--text-dark-primary);
+}
+.formInput:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(19, 127, 236, 0.4);
+}
+
+.formOptions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.forgotPasswordLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.forgotPasswordLink:hover {
+  color: rgba(19, 127, 236, 0.8);
+}
+
+.loginButton {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.loginButton:hover {
+  background-color: rgba(19, 127, 236, 0.9);
+}
+
+.loginButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(19, 127, 236, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.signupPrompt {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.signupText {
+  font-size: 0.875rem;
+  color: var(--text-light-secondary);
+}
+
+.signupLink {
+  font-weight: 500;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.signupLink:hover {
+  color: rgba(19, 127, 236, 0.8);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+  .brandingSection {
+    display: flex;
+  }
+  .loginSection {
+    padding: 3rem;
+  }
+  .loginHeader {
+    text-align: left;
+  }
+}
+
+/* Dark mode */
+.darkMode .container {
+  background-color: var(--background-dark);
+  color: var(--text-dark-primary);
+}
+
+.darkMode .logoContainer {
+  background-color: var(--background-dark);
+}
+
+.darkMode .brandingTitle {
+  color: var(--text-dark-primary);
+}
+
+.darkMode .brandingSubtitle {
+  color: var(--text-dark-secondary);
+}
+
+.darkMode .loginSubtitle {
+  color: var(--text-dark-secondary);
+}
+
+.darkMode .formLabel {
+  color: var(--text-dark-secondary);
+}
+
+.darkMode .formInput {
+  background-color: var(--input-bg-dark);
+  color: var(--text-dark-primary);
+}
+
+.darkMode .formInput:focus {
+  background-color: var(--background-dark);
+}
+
+.darkMode .signupText {
+  color: var(--text-dark-secondary);
+}

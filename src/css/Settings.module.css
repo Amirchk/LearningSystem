@@ -1,0 +1,452 @@
+body {
+  background-color: var(--background-light);
+  transition: background-color 0.3s;
+  margin: 0;
+  padding: 0;
+}
+.darkMode body {
+  background-color: var(--background-dark);
+}
+.sidebarTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  transition: color 0.3s;
+}
+.darkMode .sidebarTitle {
+  color: var(--text-dark);
+}
+.formLabel {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--text-light);
+  transition: color 0.3s;
+}
+.darkMode .formLabel {
+  color: var(--text-dark);
+}
+.switchLabel {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--text-light);
+  transition: color 0.3s;
+}
+.darkMode .switchLabel {
+  color: var(--text-dark);
+}
+
+.containerWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+.darkMode.containerWrapper {
+  background-color: var(--background-dark);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2.5rem;
+  border-bottom: 1px solid var(--border-light);
+  white-space: nowrap;
+  background-color: var(--background-light); /* ADD THIS LINE */
+  transition: background-color 0.3s; /* ADD THIS LINE */
+}
+.darkMode .header {
+  border-bottom: 1px solid var(--border-dark);
+  background-color: var(--background-dark);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-light);
+}
+.darkMode .logoContainer {
+  color: var(--text-dark);
+}
+
+.logoIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--primary);
+}
+.logoText {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.navContainer {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+}
+.navLinks {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+.navLink {
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-light);
+  transition: color 0.3s;
+}
+.darkMode .navLink {
+  color: var(--text-dark);
+}
+.navLink:hover {
+  color: var(--primary);
+}
+
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: transparent;
+  color: var(--text-muted-light);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.darkMode .iconButton {
+  color: var(--text-muted-dark);
+}
+.iconButton:hover {
+  background-color: var(--primary-light-10);
+  color: var(--primary);
+}
+.darkMode .iconButton:hover {
+  background-color: var(--primary-light-20);
+}
+
+.profileAvatarSm {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+main {
+  flex-grow: 1;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  justify-content: center;
+  background-color: var(--background-light); /* ADD THIS LINE */
+  transition: background-color 0.3s; /* ADD THIS LINE */
+}
+.darkMode main {
+  background-color: var(--background-dark);
+}
+
+.settingsContainer {
+  width: 100%;
+  max-width: 64rem;
+  display: flex;
+  gap: 2.5rem;
+}
+
+.settingsSidebar {
+  width: 240px;
+  flex-shrink: 0;
+  display: none;
+}
+.sidebarNav {
+  position: sticky;
+  top: 2rem;
+}
+.sidebarTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.sidebarMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  color: var(--text-muted-light);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+.darkMode .sidebarLink {
+  color: var(--text-muted-dark);
+}
+.sidebarLinkActive,
+.sidebarLink:hover {
+  background-color: var(--primary-light-10);
+  color: var(--primary);
+}
+.darkMode .sidebarLinkActive,
+.darkMode .sidebarLink:hover {
+  background-color: var(--primary-light-20);
+}
+.sidebarIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.settingsContent {
+  flex-grow: 1;
+  width: 100%;
+}
+.settingsSection {
+  background-color: var(--card-bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.darkMode .settingsSection {
+  background-color: var(--card-bg-dark);
+  border-color: var(--border-dark);
+}
+
+.sectionHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+}
+.darkMode .sectionHeader {
+  border-bottom-color: var(--border-dark);
+}
+.darkMode .sectionTitle {
+  color: var(--text-dark);
+}
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+.sectionSubtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted-light);
+  margin-top: 0.25rem;
+}
+.darkMode .sectionSubtitle {
+  color: var(--text-muted-dark);
+}
+
+.sectionBody {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.formGroupRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.formLabel {
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+.formInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--border-light);
+  border-radius: 0.375rem;
+  background-color: var(--background-light);
+  color: var(--text-light);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+.darkMode .formInput {
+  background-color: var(--background-dark);
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light-20);
+}
+.darkMode .formInput:focus {
+  box-shadow: 0 0 0 3px var(--primary-light-30);
+}
+
+.avatarUpload {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.profileAvatarLg {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.button {
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+.buttonPrimary {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.buttonPrimary:hover {
+  opacity: 0.9;
+}
+.buttonSecondary {
+  background-color: var(--card-bg-light);
+  color: var(--text-light);
+  border-color: var(--border-light);
+}
+.darkMode .buttonSecondary {
+  background-color: var(--card-bg-dark);
+  color: var(--text-dark);
+  border-color: var(--border-dark);
+}
+.buttonSecondary:hover {
+  background-color: var(--primary-light-10);
+}
+.darkMode .buttonSecondary:hover {
+  background-color: var(--primary-light-20);
+}
+
+.switchContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.switchLabel {
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: var(--primary);
+}
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+.linkedAccount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+}
+.darkMode .linkedAccount {
+  border-color: var(--border-dark);
+}
+.accountInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.accountIcon {
+  width: 2rem;
+  height: 2rem;
+}
+.accountName {
+  font-weight: 500;
+}
+
+.sectionFooter {
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  background-color: #f9fafb;
+}
+.darkMode .sectionFooter {
+  border-top-color: var(--border-dark);
+  background-color: #161e26;
+}
+
+@media (min-width: 768px) {
+  .navLinks {
+    display: flex;
+  }
+  .formGroupRow {
+    grid-template-columns: 200px 1fr;
+    gap: 1.5rem;
+  }
+  .formLabel {
+    text-align: right;
+    padding-top: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .settingsSidebar {
+    display: block;
+  }
+}

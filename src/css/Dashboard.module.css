@@ -1,0 +1,589 @@
+/* Dashboard.module.css */
+
+.containerWrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 320px;
+  background-color: var(--bg-white);
+  border-right: 1px solid var(--border-slate-200);
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .sidebar {
+  background-color: var(--background-dark);
+  border-right-color: var(--border-slate-800);
+}
+
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid var(--border-slate-200);
+}
+
+.dark .profileSection {
+  border-bottom-color: var(--border-slate-800);
+}
+
+.profileImage {
+  width: 128px;
+  height: 135px;
+  border-radius: 9999px;
+  margin-bottom: 16px;
+}
+
+.profileName {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-slate-900);
+}
+
+.dark .profileName {
+  color: var(--text-white);
+}
+
+.profileLevel {
+  font-size: 0.875rem;
+  color: var(--text-slate-500);
+}
+
+.dark .profileLevel {
+  color: var(--text-slate-400);
+}
+
+.xpProgress {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.xpInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--text-slate-600);
+  margin-bottom: 4px;
+}
+
+.dark .xpInfo {
+  color: var(--text-slate-400);
+}
+
+.progressBarBg {
+  width: 100%;
+  background-color: var(--bg-slate-200);
+  border-radius: 9999px;
+  height: 8px;
+}
+
+.dark .progressBarBg {
+  background-color: var(--bg-slate-700);
+}
+
+.progressBar {
+  background-color: var(--primary-color);
+  height: 8px;
+  border-radius: 9999px;
+  width: 75%;
+}
+
+.mainNav {
+  flex: 1;
+  padding: 16px;
+}
+
+.navHeading {
+  padding: 0 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-slate-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.dark .navHeading {
+  color: var(--text-slate-400);
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  color: var(--text-slate-700);
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.dark .navLink {
+  color: var(--text-slate-300);
+}
+
+.navLink:hover {
+  background-color: var(--bg-slate-100);
+}
+
+.dark .navLink:hover {
+  background-color: var(--bg-slate-800);
+}
+
+.navLinkIcon {
+  margin-right: 12px;
+}
+
+.mainContent {
+  flex: 1;
+}
+
+.mainHeader {
+  background-color: var(--bg-white);
+  border-bottom: 1px solid var(--border-slate-200);
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dark .mainHeader {
+  background-color: var(--background-dark);
+  border-bottom-color: var(--border-slate-800);
+}
+.dashboard {
+  display: flex;
+  flex-direction: column;
+}
+.darkMode .dashboard {
+  background-color: var(--background-dark);
+}
+.darkMode .profileName,
+.darkMode .profileLevel,
+.darkMode .navHeading,
+.darkMode .navLink {
+  color: var(--text-slate-300);
+}
+.darkMode .navLink:hover, .darkMode .notificationBtn:hover {
+  background-color: var(--bg-slate-800);
+}
+.darkMode .logoText,
+.darkMode .headerNav a, .darkMode .cardTitle,
+.darkMode .cardSubtitle, .darkMode .sectionHeading, .darkMode .matchName, .darkMode .notificationBtn, .darkMode .chatName {
+  color: var(--text-white);
+}
+.darkMode .dashboardHeader h1,
+.darkMode .dashboardHeader p {
+  color: var(--text-slate-300);
+}
+.darkMode .chatContact {
+  background-color: rgba(30, 41, 59, 0.5);
+}
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--text-slate-900);
+}
+
+.dark .logoContainer {
+  color: var(--text-white);
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  color: var(--primary-color);
+}
+
+.logoText {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.headerNav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .headerNav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+}
+
+.headerNav a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-slate-600);
+  text-decoration: none;
+}
+
+.dark .headerNav a {
+  color: var(--text-slate-300);
+}
+
+.headerNav a:hover {
+  color: var(--primary-color);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notificationBtn {
+  padding: 8px;
+  border-radius: 9999px;
+  color: var(--text-slate-500);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dark .notificationBtn {
+  color: var(--text-slate-400);
+}
+
+.notificationBtn:hover {
+  background-color: var(--bg-slate-100);
+}
+
+.dark .notificationBtn:hover {
+  background-color: var(--bg-slate-800);
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+}
+
+.mainArea {
+  padding: 24px 40px;
+}
+
+@media (min-width: 1024px) {
+  .mainArea {
+    padding: 40px;
+  }
+}
+
+.mainArea > * + * {
+  margin-top: 32px;
+}
+
+.dashboardHeader h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-slate-900);
+  margin: 0;
+}
+
+.dark .dashboardHeader h1 {
+  color: var(--text-white);
+}
+
+.dashboardHeader p {
+  color: var(--text-slate-500);
+  margin-top: 4px;
+}
+
+.dark .dashboardHeader p {
+  color: var(--text-slate-400);
+}
+
+.sectionHeading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-slate-900);
+}
+
+.dark .sectionHeading {
+  color: var(--text-white);
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.gridCols1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+@media (min-width: 640px) {
+  .smGridCols2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .lgGridCols3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .lgColSpan2 {
+    grid-column: span 2 / span 2;
+  }
+}
+
+.card {
+  background-color: var(--bg-white);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.dark .card {
+  background-color: var(--bg-slate-900-50);
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.cardImage {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: 16px;
+}
+
+.cardTitle {
+  font-weight: 700;
+  color: var(--text-slate-800);
+  margin: 0;
+}
+
+.dark .cardTitle {
+  color: var(--text-slate-100);
+}
+
+.cardSubtitle {
+  font-size: 0.875rem;
+  color: var(--text-slate-500);
+  margin: 0;
+}
+
+.dark .cardSubtitle {
+  color: var(--text-slate-400);
+}
+
+.matchCard {
+  background-color: var(--bg-white);
+  padding: 16px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  margin-bottom: 16px;
+}
+
+.dark .matchCard {
+  background-color: var(--bg-slate-900-50);
+}
+
+.matchAvatar {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.matchInfo {
+  flex: 1;
+}
+
+.matchHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.matchName {
+  font-weight: 700;
+  color: var(--text-slate-800);
+  margin: 0;
+}
+
+.dark .matchName {
+  color: var(--text-slate-100);
+}
+
+.matchDetails {
+  font-size: 0.875rem;
+  color: var(--text-slate-500);
+  margin: 0;
+}
+
+.dark .matchDetails {
+  color: var(--text-slate-400);
+}
+
+.reliabilityBadge {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 9999px;
+}
+
+.reliabilityHigh {
+  color: var(--green-500);
+  background-color: var(--green-100);
+}
+
+.dark .reliabilityHigh {
+  color: var(--green-400);
+  background-color: var(--green-900-50);
+}
+
+.reliabilityMedium {
+  color: var(--yellow-500);
+  background-color: var(--yellow-100);
+}
+
+.dark .reliabilityMedium {
+  color: var(--yellow-400);
+  background-color: var(--yellow-900-50);
+}
+
+.connectBtn {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: var(--text-white);
+  background-color: var(--primary-color);
+  padding: 8px 16px;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.connectBtn:hover {
+  opacity: 0.9;
+}
+
+.chatContainer {
+  background-color: var(--bg-white);
+  padding: 16px;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.dark .chatContainer {
+  background-color: var(--bg-slate-900-50);
+}
+
+.chatContact {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  margin: -8px;
+  margin-bottom: 8px;
+}
+
+.chatContact:hover {
+  background-color: var(--bg-slate-100);
+}
+
+.dark .chatContact:hover {
+  background-color: rgba(30, 41, 59, 0.5);
+}
+
+.chatAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+}
+
+.chatDetails {
+  flex: 1;
+}
+
+.chatHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatName {
+  font-weight: 600;
+  color: var(--text-slate-800);
+}
+
+.dark .chatName {
+  color: var(--text-slate-100);
+}
+
+.chatTime {
+  font-size: 0.75rem;
+  color: var(--text-slate-400);
+}
+
+.dark .chatTime {
+  color: var(--text-slate-500);
+}
+
+.chatMessage {
+  font-size: 0.875rem;
+  color: var(--text-slate-500);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.dark .chatMessage {
+  color: var(--text-slate-400);
+}
+
+.tipCard {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.75rem;
+  padding: 32px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+}
+
+.tipContent {
+  max-width: 50%;
+}
+
+.tipTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.tipText {
+  margin-top: 8px;
+}
+
+.materialSymbolsOutlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+.smallImage { 
+  width: 50px;;
+  height: 55px;
+  border-radius: 50%;
+}

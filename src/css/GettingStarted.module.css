@@ -1,0 +1,198 @@
+/* Help.module.css */
+.containerWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  border-bottom: 1px solid var(--primary-light-20);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-light);
+}
+
+.logoIcon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--primary);
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navLinks {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navLinks {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-light);
+  transition: color 0.3s;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+.profileAvatarSm {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--primary);
+}
+
+main {
+  flex-grow: 1;
+  padding: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.helpHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.helpTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.helpSubtitle {
+  font-size: 1.125rem;
+  color: var(--text-muted-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.helpGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .helpGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .helpGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.helpCard {
+  background-color: var(--card-bg-light);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.helpCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px var(--shadow-color), 0 4px 6px -2px var(--shadow-color);
+}
+
+.cardIcon {
+  display: inline-block;
+  background-color: var(--primary-light-10);
+  border-radius: 9999px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cardIcon svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--primary);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 0.75rem;
+}
+
+.cardDescription {
+  font-size: 0.875rem;
+  color: var(--text-muted-light);
+  margin-bottom: 1.5rem;
+}
+
+.cardLink {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.3s;
+}
+
+.cardLink:hover {
+  gap: 0.75rem;
+}
+
+.ctaSection {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.ctaButton {
+  background-color: var(--primary);
+  color: var(--text-dark);
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.125rem;
+  display: inline-block;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.ctaButton:hover {
+  background-color: #106ac4;
+  transform: translateY(-2px);
+}
+.mainContent {
+    display: flex;
+    flex-direction: column;
+}

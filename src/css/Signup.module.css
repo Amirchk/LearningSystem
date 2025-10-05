@@ -1,0 +1,368 @@
+body {
+  background-color: var(--background-light);
+  color: var(--text-light-primary);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background-light);
+}
+
+/* Header */
+.header {
+  width: 100%;
+  background-color: var(--background-light);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.headerContent {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoIcon {
+  height: 2rem;
+  width: 2rem;
+  color: var(--primary-color);
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-light-primary);
+}
+
+.navLinks a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-light-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+  margin-left: 2rem;
+}
+
+.navLinks a:hover {
+  color: var(--primary-color);
+}
+
+.loginButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  padding: 0 1rem;
+  background-color: rgba(19, 127, 236, 0.1);
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.loginButton:hover {
+  background-color: rgba(19, 127, 236, 0.2);
+}
+
+/* Main Section */
+.main {
+  margin: 0 auto;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+form {
+  border: none;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.formHeader h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.formHeader p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--text-light-secondary);
+}
+
+.form {
+  background-color: var(--background-light);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 1px solid var(--border-light);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  padding: 1vw 0;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.input,
+.textarea {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-light);
+  background-color: var(--input-background-light);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  color: var(--text-light-primary);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--input-placeholder-light);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+/* Sections */
+.sectionDivider {
+  border-top: 1px solid var(--border-light);
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+.sectionDivider h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.sectionDescription {
+  font-size: 0.875rem;
+  color: var(--text-light-secondary);
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Checkboxes & Radios */
+.checkboxGrid,
+.radioGroup {
+  margin-top: 1rem;
+}
+
+.checkboxGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.checkboxItem,
+.radioItem {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxItem input[type="checkbox"],
+.radioItem input[type="radio"] {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.25rem;
+  border-color: var(--border-light);
+  color: var(--primary-color);
+  margin-right: 0.75rem;
+}
+
+.radioItem input[type="radio"] {
+  border-radius: 9999px;
+}
+
+.checkboxItem input[type="checkbox"]:focus,
+.radioItem input[type="radio"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(19, 127, 236, 0.5);
+}
+
+.checkboxItem label,
+.radioItem label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-light-primary);
+  margin-bottom: 0;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Submit Button */
+.submitButtonContainer {
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submitButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0 2.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  width: 100%;
+}
+
+.submitButton:hover {
+  background-color: #106ac4;
+}
+
+/* ==========================
+   DARK MODE
+========================== */
+.darkMode {
+  --background-light: var(--background-dark);
+  --text-light-primary: var(--text-dark-primary);
+  --text-light-secondary: var(--text-dark-secondary);
+  --border-light: var(--border-dark);
+  --input-background-light: var(--input-background-dark);
+  --input-placeholder-light: var(--input-placeholder-dark);
+}
+.darkMode body {
+  background-color: var(--background-dark);
+}
+
+.darkMode .container {
+  background-color: var(--background-dark);
+}
+
+.darkMode .header {
+  background-color: var(--background-dark);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.darkMode .logoText,
+.darkMode .navLinks a,
+.darkMode .formHeader p,
+.darkMode .formHeaderTitle,
+.darkMode .label,
+.darkMode .formGroup input,
+.darkMode .formGroup,
+.darkMode .textarea,
+.darkMode .successMessage,
+.darkMode .checkboxItem label,
+.darkMode .radioGroup label,
+.darkMode .sectionDivider h3,
+.darkMode .sectionDescription {
+  color: var(--text-dark-primary);
+}
+
+.darkMode .formGroup input,
+.darkMode .textarea {
+  background-color: var(--input-background-dark);
+  color: var(--text-dark-primary);
+}
+
+.darkMode .formGroup input::placeholder,
+.darkMode .textarea::placeholder {
+  color: var(--input-placeholder-dark);
+}
+.darkMode .form {
+  background-color: var(--surface-dark); 
+}
+
+.darkMode .checkboxItem input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 10px;
+  border-width: 0 2px 2px 0;
+  top: 2px;
+  left: 6px;
+  transform: rotate(45deg);
+  background-color: var(--text-dark-primary);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (min-width: 640px) {
+  .navLinks {
+    display: block;
+  }
+  .loginButton {
+    display: flex;
+  }
+  .checkboxGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .radioGroup {
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .submitButton {
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .formGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

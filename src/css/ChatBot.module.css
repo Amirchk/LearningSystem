@@ -1,0 +1,372 @@
+body {
+  font-family: "Inter", sans-serif;
+}
+
+/* ===== Chat Container ===== */
+.chatContainer {
+  position: fixed;
+  width: 360px;
+  height: 500px;
+  background-color: var(--bg-white);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.4s ease, visibility 0.4s;
+}
+
+/* ===== Background Effects ===== */
+.backgroundEffects {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bgCircle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.4;
+}
+
+.bgCircle1 {
+  width: 200px;
+  height: 200px;
+  top: -50px;
+  left: -50px;
+  background: #3b82f6;
+}
+
+.bgCircle2 {
+  width: 250px;
+  height: 250px;
+  bottom: -80px;
+  right: -60px;
+  background: #00c9a7;
+}
+
+/* ===== Chat Wrapper ===== */
+.chatWrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ===== Header ===== */
+.chatHeader {
+  background: #3b82f6;
+  color: white;
+  padding: 16px;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.botAvatar {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+.onlineIndicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  background: #00c853;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.headerText h1 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.headerText p {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.headerRight {
+  font-size: 20px;
+}
+
+/* ===== Messages ===== */
+.messagesContainer {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #f9fafc;
+}
+
+.message {
+  margin-bottom: 14px;
+  display: flex;
+}
+
+.messageWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.messageUser {
+  justify-content: flex-end;
+}
+
+.messageBot {
+  justify-content: flex-start;
+}
+
+.messageAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.messageContentWrapper {
+  max-width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.messageContent {
+  background-color: #f1f5f9;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.contentUser {
+  background: #3b82f6;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.contentBot {
+  background: #f1f5f9;
+  color: #333;
+  border-bottom-left-radius: 4px;
+}
+
+.messageTime {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.timeUser {
+  align-self: flex-end;
+}
+
+.timeBot {
+  align-self: flex-start;
+}
+
+/* ===== Typing Indicator ===== */
+.typingIndicator {
+  background: #eceff1;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.typingDots {
+  display: flex;
+  gap: 3px;
+}
+
+.typingDot {
+  width: 6px;
+  height: 6px;
+  background: #3b82f6;
+  border-radius: 50%;
+  animation: blink 1.2s infinite;
+}
+
+.typingDot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typingDot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+/* ===== Input Section ===== */
+.inputSection {
+  padding: 12px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inputContainer {
+  position: relative;
+  flex: 1;
+}
+
+.messageInput {
+  width: 100%;
+  resize: none;
+  padding: 10px 36px 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.messageInput:focus {
+  border-color: #3b82f6;
+}
+
+.inputIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.sendButton {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.sendButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.sendButton:hover:not(:disabled) {
+  background: #574bdb;
+}
+
+.loadingSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Quick Actions ===== */
+.quickActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.quickAction {
+  flex: 1;
+  padding: 8px 12px;
+  background: #f1f3f6;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.quickAction:hover {
+  background: #e0e4ea;
+}
+
+/* ===== Markdown Formatting inside bot messages ===== */
+.formattedContent h1,
+.formattedContent h2,
+.formattedContent h3 {
+  margin: 6px 0;
+}
+
+.formattedContent p {
+  margin: 6px 0;
+}
+
+.formattedContent pre code {
+  background: transparent !important;
+  color: #f8f8f2 !important;
+  font-family: "Fira Code", monospace;
+}
+
+.formattedContent pre {
+  background: #272822;
+  color: #f8f8f2;
+  padding: 10px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.formattedContent code {
+  background: #f1f1f1;
+  color: #e83e8c;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: "Fira Code", monospace;
+}

@@ -1,0 +1,94 @@
+.logoutContainer {
+  background-color: var(--card-background);
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 3rem;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  margin: 2.5rem auto; /* centers if used inside a page */
+  color: var(--text-color);
+  font-family: "Lexend", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Noto Sans", "Helvetica Neue", Arial;
+}
+
+/* Icon */
+.logoutIcon {
+  width: 4rem;
+  height: 4rem;
+  color: var(--primary-color);
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title + message */
+.logoutTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.logoutMessage {
+  color: var(--secondary-color);
+  margin: 0 0 2rem 0;
+  font-size: 1rem;
+}
+
+/* Buttons */
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* base button */
+.btn {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.06s ease;
+  width: 100%;
+  max-width: 160px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Logout button (danger) */
+.btnLogout {
+  background-color: var(--danger-color);
+  color: var(--white-color);
+}
+
+.btnLogout:hover {
+  background-color: var(--danger-hover-color);
+}
+
+/* Cancel button (secondary) */
+.btnCancel {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.btnCancel:hover {
+  background-color: var(--secondary-hover-color);
+}
+
+/* small active press effect */
+.btn:active {
+  transform: translateY(1px) scale(0.995);
+}
+
+/* Responsive tweaks */
+@media (min-width: 640px) {
+  .logoutContainer {
+    margin: 4rem auto;
+  }
+  .buttonGroup {
+    gap: 1.25rem;
+  }
+}
