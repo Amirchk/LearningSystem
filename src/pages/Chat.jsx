@@ -21,14 +21,14 @@ const Chat = () => {
                     <div className={`${styles.chatContact} ${styles.active}`}>
                         <div className={styles.chatAvatar}>
                             <img
-                                alt="Ethan Miller chat head"
+                                alt="Faizan Sarwar chat head"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3Jdi_WHCnpPj35b_yl5_T4Ffhmk13wRrfRIP7aB-MgkiMz5pL5yoi0SBsfwOXjZyKxoTq25Kn210rs0xv8pW9nEI9FbaSierb32Wiy6z9Bx-_5aZKDmUhSuCmY_Ivm3_7d0HS7FYJnZZ2OIiYP2_qhVO7fLfKVeE9RrtY_u67xRHTqIxp6UX-TLzhYAGD8uRCKAvV1a6tynNL88LErKJy8Y6covrKsIiuYk0wU9fWkQEW7PXGHgHb1HSO_fmWAkFQXnMgIUtUn4DB"
                             />
                             <div claAssName={styles.onlineIndicator}></div>
                         </div>
                         <div className={styles.chatDetails}>
                             <div className={styles.chatHeader}>
-                                <p className={styles.chatName}>Ethan Miller</p>
+                                <p className={styles.chatName}>Faizan Sarwar</p>
                                 <p className={styles.chatTime}>2 min</p>
                             </div>
                             <p className={styles.chatMessage}>
@@ -41,13 +41,13 @@ const Chat = () => {
                     <div className={styles.chatContact}>
                         <div className={styles.chatAvatar}>
                             <img
-                                alt="Olivia Carter chat head"
+                                alt="User 1 chat head"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWW3g_eB16HrWRcWBQrn_SCEbDd4WMSWzAWw0LNFmZMTLcPXFOYTaEZ1OU5bCnlDdEOLi9ZXlw3bkEOdEaGUtErcuW1wrgoMI57-wqhwiB4q_6q_HXuNPs44VouCwBf-6cI7dU37QVM1EmjkMOUSt-71zpVUddmNG1uCqDiDdnA78NqWjm8ItyDFnx811zy7nU9ntQpLsrTD1NV4AW8f-nz-ooLUO3NZOu3WO0yzFxS9GwCknrrk8knY-49YJ086hJOSQO8mY8uKnA"
                             />
                         </div>
                         <div className={styles.chatDetails}>
                             <div className={styles.chatHeader}>
-                                <p className={styles.chatName}>Olivia Carter</p>
+                                <p className={styles.chatName}>User 1</p>
                                 <p className={styles.chatTime}>15 min</p>
                             </div>
                             <p className={styles.chatMessage}>
@@ -60,14 +60,14 @@ const Chat = () => {
                     <div className={styles.chatContact}>
                         <div className={styles.chatAvatar}>
                             <img
-                                alt="Liam Rodriguez chat head"
+                                alt="User 2 chat head"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM_3r7_H8h6O6vW4hXqD-c_7dD2o4M4a9bB2bQ9dJ7sE5R1cI0pL4hU6uR6bI2wP5qK3fD1eW8hG5cZ7iL3pG5kH4nN3bQ5rO6pS4tD3uM2eI1zX9tY8vR7uC6gB5aE4dI3fW2gH1iK0jL1qM0nB9cE8dG7fA6bC5eD4cI3bA2"
                             />
                             <div className={styles.onlineIndicator}></div>
                         </div>
                         <div className={styles.chatDetails}>
                             <div className={styles.chatHeader}>
-                                <p className={styles.chatName}>Liam Rodriguez</p>
+                                <p className={styles.chatName}>User 2</p>
                                 <p className={styles.chatTime}>1 hour</p>
                             </div>
                             <p className={styles.chatMessage}>
@@ -80,7 +80,7 @@ const Chat = () => {
                     <div className={styles.chatContact}>
                         <div className={styles.chatAvatar}>
                             <img
-                                alt="Ava Nguyen chat head"
+                                alt="User 3 chat head"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOoB2H-M5U4G4y4H3q2M5j5B7s6B9k8D7cE6fG5aC4bB3aA2zX1yZ0xW9uV8tS7rQ6pP5oN4mN3lM2kK1jJ0iH9gG8fF7eD6cE5bB4aC3zX2yY1wX9vV8uU7tS6rQ5pP4oN3mM2kL1jJ0iH9gG8fF7eD6cE5bB4aC3zX2yY1wX9"
                             />
                         </div>
@@ -102,12 +102,12 @@ const Chat = () => {
                 <header className={styles.mainHeader}>
                     <div className={styles.chatPartnerInfo}>
                         <img
-                            alt="Ethan Miller"
+                            alt="Faizan Sarwar"
                             className={styles.chatPartnerAvatar}
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx0cR6WOicwaQxwv3Pj5XV4ugqq64FKfQSthliETlKZrLhHR0ovpUu3nW6govH9TLvADYQLUl9oGsOmI6PGiffyNah0p9kmN2VXWCnrr8oQn_johYs8AAPHtujSMJvlWcA1MgQOcApDgQ6VplzQvXlTraYqXRWKBkfrbAD-VMk0xMutEBsnI-lVZC0tsJ5cQuVsBp8q0mH2Js9K2U4IcQ_rS_z7kzJu9fMXZLHqCTN_ykQN5c8dS8Y-3W22_bS6taAR7iIg3NLE_or"
                         />
                         <div className={styles.chatPartnerDetails}>
-                            <h3>Ethan Miller</h3>
+                            <h3>Faizan Sarwar</h3>
                             <p>Online</p>
                         </div>
                     </div>
