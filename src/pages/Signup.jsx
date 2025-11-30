@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "../css/Signup.module.css";
 import { useDarkMode } from "./DarkModeContext";
 import { Link } from "react-router-dom";
+import Quiz from "../components/Quiz";
 
 const Signup = () => {
   const { darkMode } = useDarkMode();
@@ -21,6 +22,10 @@ const Signup = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [quizQuestions, setQuizQuestions] = useState([]);
+  const [quizLoading, setQuizLoading] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [quizError, setQuizError] = useState("");
 
   const subjects = [
     "DSA", "Web Development", "MAD", "Programming Fundamentals", "Artificial Intelligence",
@@ -31,23 +36,30 @@ const Signup = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((f) => ({ ...f, [name]: value }));
   };
 
   const handleCheckboxChange = (e, field) => {
     const { value, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [field]: checked ? [...prev[field], value] : prev[field].filter((v) => v !== value)
-    }));
+    setFormData((f) => {
+      const arr = Array.isArray(f[field]) ? [...f[field]] : [];
+      if (checked && !arr.includes(value)) arr.push(value);
+      if (!checked) {
+        const idx = arr.indexOf(value);
+        if (idx !== -1) arr.splice(idx, 1);
+      }
+      return { ...f, [field]: arr };
+    });
   };
 
   const handleRadioChange = (e) => {
-    setFormData((prev) => ({ ...prev, studyStyle: e.target.value }));
+    const { name, value } = e.target;
+    setFormData((f) => ({ ...f, [name]: value }));
   };
 
   const handleFileChange = (e) => {
-    setPicture(e.target.files[0]);
+    const file = e.target.files && e.target.files[0];
+    if (file) setPicture(file);
   };
 
   const handleSubmit = async (e) => {
@@ -62,7 +74,7 @@ const Signup = () => {
         if (Array.isArray(formData[key])) {
           formData[key].forEach((val) => payload.append(key, val));
         } else {
-          payload.append(key, formData[key]);
+          payload.append(key, formData[key] ?? "");
         }
       }
       if (picture) payload.append("picture", picture);
@@ -72,9 +84,9 @@ const Signup = () => {
         body: payload,
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (res.ok) {
-        setSuccess(data.message);
+        setSuccess(data.message || "Profile created.");
         setFormData({
           name: "",
           rollNumber: "",
@@ -89,13 +101,42 @@ const Signup = () => {
         });
         setPicture(null);
       } else {
-        setError(data.message);
+        setError(data.message || "Failed to create profile.");
       }
     } catch (err) {
-      setError("Something went wrong. Please try again.");
       console.error(err);
+      setError("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const fetchQuizFromServer = async () => {
+    setQuizError("");
+    setQuizLoading(true);
+    setQuizQuestions([]);
+    try {
+      const topics = formData.strengths && formData.strengths.length
+        ? formData.strengths.slice(0, 5)
+        : ["Programming Fundamentals", "DSA"];
+
+      const res = await fetch("http://localhost:5000/api/generate-quiz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ topics }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.message || "Failed to generate quiz");
+      // Expect data.questions = [{ question, options: [...4], answer }, ...]
+      console.log("Generated quiz:", data);
+      setQuizQuestions(data.questions || []);
+      setShowQuiz(true);
+    } catch (err) {
+      console.error(err);
+      setQuizError("Unable to generate quiz right now.");
+    } finally {
+      setQuizLoading(false);
     }
   };
 
@@ -320,6 +361,18 @@ const Signup = () => {
               />
             </div>
 
+            <div style={{ marginTop: 12 }}>
+              <button
+                type="button"
+                onClick={fetchQuizFromServer}
+                disabled={quizLoading}
+                className={styles.submitButton}
+              >
+                {quizLoading ? "Generating Quiz..." : "Generate 10-question Quiz"}
+              </button>
+              {quizError && <div className={styles.errorMessage} style={{ marginTop: 8 }}>{quizError}</div>}
+            </div>
+
             <div className={styles.submitButtonContainer}>
               <button
                 type="submit"
@@ -330,6 +383,11 @@ const Signup = () => {
               </button>
             </div>
           </form>
+          {showQuiz && (
+            <div style={{ marginTop: 18, padding: 14, border: "1px solid #ddd", borderRadius: 6 }}>
+              <Quiz questions={quizQuestions} onClose={() => setShowQuiz(false)} />
+            </div>
+          )}
         </div>
       </main>
     </div>
