@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Quiz = ({ questions = [], onClose }) => {
+const Quiz = ({ questions = [], onClose, onFinish }) => {
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
@@ -10,17 +10,6 @@ const Quiz = ({ questions = [], onClose }) => {
     return (
       <div>
         <p>No quiz available.</p>
-        <button onClick={onClose}>Close</button>
-      </div>
-    );
-  }
-
-  if (index >= questions.length) {
-    return (
-      <div>
-        <h3>Quiz finished</h3>
-        <p>Score: {score} / {questions.length}</p>
-        <button onClick={() => { setIndex(0); setScore(0); setSelected(null); setShowAnswer(false); }}>Retry</button>
         <button onClick={onClose}>Close</button>
       </div>
     );
@@ -38,7 +27,12 @@ const Quiz = ({ questions = [], onClose }) => {
   const next = () => {
     setSelected(null);
     setShowAnswer(false);
-    setIndex((i) => i + 1);
+    if (index + 1 < questions.length) {
+      setIndex((i) => i + 1);
+    } else {
+      // quiz finished -> call onFinish callback with score & total
+      if (typeof onFinish === "function") onFinish(score, questions.length);
+    }
   };
 
   return (
@@ -68,7 +62,7 @@ const Quiz = ({ questions = [], onClose }) => {
 
       {showAnswer ? (
         <div>
-          <p>{selected === q.answer ? "Correct ✅" : `Incorrect — correct: ${q.answer}`}</p>
+          <p>{selected === q.answer ? "Correct ✅" : `Incorrect — correct: ${q.answer || "N/A"}`}</p>
           <button onClick={next}>{index + 1 < questions.length ? "Next" : "Finish"}</button>
         </div>
       ) : (

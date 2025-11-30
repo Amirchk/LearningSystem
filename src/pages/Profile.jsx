@@ -1,35 +1,29 @@
-import { react, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../css/Profile.module.css";
 import { useDarkMode } from "./DarkModeContext";
 import { Link } from "react-router-dom";
 import emoji from "../imgs/emoji.jpg";
-import { useState } from "react";
 
 const Profile = () => {
-
   const [stats, setStats] = useState(null);
-
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) {
-      fetch(`http://localhost:5000/student/${storedUser._id}/stats`)
-        .then(res => res.json())
-        .then(data => setStats(data))
-        .catch(err => console.error("Error fetching stats:", err));
-    }
-  }, []);
-
   const [user, setUser] = useState(null);
+  const { darkMode, setDarkMode } = useDarkMode();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (storedUser) {
       setUser(storedUser);
+      fetch(`http://localhost:5000/student/${storedUser._id}/stats`)
+        .then((res) => res.json())
+        .then((data) => setStats(data))
+        .catch((err) => console.error("Error fetching stats:", err));
     }
   }, []);
-  const totalModules = 20;   // max modules
-  const studyGoal = 100;     // target study hours
-  const maxGroups = 5;       // expected max active groups
+
+  // fallback progress inputs
+  const totalModules = 20; // max modules
+  const studyGoal = 100; // target study hours
+  const maxGroups = 5; // expected max active groups
 
   const moduleProgress = stats?.completedModules
     ? (stats.completedModules / totalModules) * 100
@@ -43,13 +37,35 @@ const Profile = () => {
     ? (stats.activeGroups / maxGroups) * 100
     : 0;
 
-  // Weighted final progress
-  const progress = Math.min(
+  // previous weighted progress (fallback)
+  const weightedProgress = Math.min(
     (moduleProgress * 0.5) + (hoursProgress * 0.3) + (groupsProgress * 0.2),
     100
   );
 
-  const { darkMode, setDarkMode } = useDarkMode();
+  // Prefer XP-based progress when xp exists for the logged-in user
+  const xpGoal = 1000; // change as desired: XP value that maps to 100%
+  const xpValue = stats?.xp ?? user?.xp ?? 0;
+  const xpProgress = Math.min((xpValue / xpGoal) * 100, 100);
+
+  // Determine whether the user completed a signup quiz (presence of any quizHistory entry)
+  const quizHistory = stats?.quizHistory ?? user?.quizHistory ?? [];
+  const quizCompleted = Array.isArray(quizHistory) && quizHistory.length > 0;
+
+  // Use XP progress if xp is present, otherwise fallback to weighted progress
+  const progress = xpValue > 0 ? xpProgress : weightedProgress;
+
+  // Style change for progress bar when quiz was completed on signup
+  const progressFillStyle = {
+    width: `${progress}%`,
+    background: quizCompleted ? "#2ecc71" : "#1976d2" // green if quiz completed, blue otherwise
+  };
+
+  // Last quiz summary (if available)
+  const lastQuiz = Array.isArray(quizHistory) && quizHistory.length
+    ? quizHistory[quizHistory.length - 1]
+    : null;
+
   return (
     <div className={`${styles.container} ${darkMode ? styles.darkMode : ''}`}>
       <div className={styles.flexGrow}>
@@ -129,6 +145,19 @@ const Profile = () => {
                   <p className={styles.profileLevel}>Level 3</p>
                 </div>
               </div>
+
+              {/* Signup-quiz badge */}
+              <div style={{ marginLeft: 16 }}>
+                {quizCompleted ? (
+                  <div style={{ padding: "6px 10px", background: "#eafaf1", color: "#2ecc71", borderRadius: 6, fontWeight: 600 }}>
+                    Quiz completed on signup ✓
+                  </div>
+                ) : (
+                  <div style={{ padding: "6px 10px", background: "#f0f3f7", color: "#666", borderRadius: 6 }}>
+                    Signup quiz not taken
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Tabs */}
@@ -188,11 +217,17 @@ const Profile = () => {
                   <div className={styles.progressBarBg}>
                     <div
                       className={styles.progressBarFill}
-                      style={{ width: `${progress}%` }}
+                      style={progressFillStyle}
                     ></div>
                   </div>
                 </div>
 
+                {/* small quiz summary */}
+                {lastQuiz && (
+                  <div style={{ marginTop: 12, padding: 8, borderRadius: 6, background: "#fafafa" }}>
+                    <strong>Last quiz:</strong> {lastQuiz.score} / {lastQuiz.total} — XP earned: {lastQuiz.xpEarned}
+                  </div>
+                )}
 
                 <div className={styles.statsGrid}>
                   <div className={styles.statCard}>

@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import https from "https";
 import authRoutes from "./routes/auth.js";
 import StudyGroup from "./models/StudyGroup.js";
+import User from "./models/User.js";
 
 dotenv.config();
 
@@ -51,6 +52,59 @@ app.post("/studygroup", async (req, res) => {
   } catch (err) {
     console.error("Error creating group:", err);
     res.status(500).json({ message: "Server error" });
+  }
+});
+
+// Signup route
+app.post("/signup", async (req, res) => {
+  try {
+    // if client sent multipart/form-data, ensure body parser handles it in frontend.
+    // Here we expect simple fields in req.body (if FormData used, you may need multer).
+    const {
+      name, rollNumber, email, password, department, semester,
+      age, strengths, difficulties, studyStyle, availability,
+      xp, quizScore, quizTotal
+    } = req.body;
+
+    // basic validation
+    if (!name || !email) return res.status(400).json({ message: "Name and email required" });
+
+    // parse arrays if sent as repeated fields or JSON strings
+    const arr = (val) => {
+      if (!val) return [];
+      if (Array.isArray(val)) return val;
+      try { return JSON.parse(val); } catch { return String(val).split(",").map(s => s.trim()).filter(Boolean); }
+    };
+
+    const newUser = new User({
+      name,
+      rollNumber,
+      email,
+      password,
+      department,
+      semester,
+      age: age ? Number(age) : undefined,
+      strengths: arr(strengths),
+      difficulties: arr(difficulties),
+      studyStyle,
+      availability,
+      xp: xp ? Number(xp) : undefined,
+    });
+
+    // if quiz result sent, append to quizHistory
+    if (quizScore && quizTotal) {
+      const score = Number(quizScore);
+      const total = Number(quizTotal);
+      const xpEarned = xp ? Number(xp) : Math.round(100 + (score / Math.max(1, total)) * 100);
+      newUser.quizHistory.push({ score, total, xpEarned, date: new Date() });
+      newUser.xp = xpEarned;
+    }
+
+    const saved = await newUser.save();
+    res.status(201).json({ message: "Profile created", userId: saved._id });
+  } catch (err) {
+    console.error("Signup error:", err);
+    res.status(500).json({ message: "Server error", error: String(err) });
   }
 });
 
