@@ -6,9 +6,9 @@ import emoji from "../imgs/emoji.jpg";
 import { Link } from "react-router-dom";
 import { useDarkMode } from "./DarkModeContext";
 
-
 const Dashboard = () => {
-  const [user, setUser] = useState(null);     // ✅ Declare this first
+  const [user, setUser] = useState(null);
+  const [stats, setStats] = useState(null); // added
   const [matches, setMatches] = useState([]);
   const [activeGroups, setActiveGroups] = useState([]);
   const { darkMode, setDarkMode } = useDarkMode();
@@ -19,8 +19,24 @@ const Dashboard = () => {
     if (storedUser) {
       setUser(storedUser);
     }
-    
   }, []);
+
+  // Fetch user stats (xp / quizHistory) when user is available
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        if (user?._id) {
+          const res = await fetch(`http://localhost:5000/student/${user._id}/stats`);
+          if (!res.ok) throw new Error("Failed to fetch stats");
+          const data = await res.json();
+          setStats(data);
+        }
+      } catch (err) {
+        console.error("Error fetching user stats:", err);
+      }
+    };
+    fetchStats();
+  }, [user]);
 
   // Fetch matches when user is ready
   useEffect(() => {
@@ -53,6 +69,14 @@ const Dashboard = () => {
     fetchGroups();
   }, []);
 
+  // XP / Level calculations
+  const xpValue = Number(stats?.xp ?? user?.xp ?? 0);
+  const xpPerLevel = 500; // configurable: XP required per level
+  const level = Math.floor(xpValue / xpPerLevel) + 1;
+  const xpIntoLevel = xpValue % xpPerLevel;
+  const xpToNext = xpPerLevel - xpIntoLevel;
+  const progressPercent = Math.min((xpIntoLevel / xpPerLevel) * 100, 100);
+
   return (
     <div className={`${styles.containerWrapper} ${darkMode ? styles.darkMode : ''}`}>
       <aside className={styles.sidebar}>
@@ -63,19 +87,23 @@ const Dashboard = () => {
             src={
               user?.pictureUrl
                 ? `http://localhost:5000${user.pictureUrl}`
-                : faizanHeaderImg // fallback if no upload
+                : faizanHeaderImg
             }
           />
           <h2 className={styles.profileName}>{user?.name}</h2>
 
-          <p className={styles.profileLevel}>Level 3 - 1200 XP</p>
+          {/* Dynamic level and XP */}
+          <p className={styles.profileLevel}>Level {level} - {xpValue} XP</p>
           <div className={styles.xpProgress}>
             <div className={styles.xpInfo}>
               <span>Next Level</span>
-              <span>300 XP to go</span>
+              <span>{xpToNext} XP to go</span>
             </div>
             <div className={styles.progressBarBg}>
-              <div className={styles.progressBar}></div>
+              <div
+                className={styles.progressBar}
+                style={{ width: `${progressPercent}%` }}
+              ></div>
             </div>
           </div>
         </div>
@@ -127,7 +155,7 @@ const Dashboard = () => {
               src={
                 user?.pictureUrl
                   ? `http://localhost:5000${user.pictureUrl}`
-                  : faizanHeaderImg // fallback if no upload
+                  : faizanHeaderImg
               }
             />
           </div>
@@ -189,35 +217,6 @@ const Dashboard = () => {
                     ))
                   )}
                 </div>
-
-
-                {/* <div>
-                  {matches.length === 0 && <p>No matches found yet.</p>}
-                  {matches.map((match) => (
-                    <div key={match._id} className={styles.matchCard}>
-                      <img
-                        alt={match.name}
-                        className={styles.matchAvatar}
-                        src={match.pictureUrl ? `http://localhost:5000${match.pictureUrl}` : emoji}
-                      />
-                      <div className={styles.matchInfo}>
-                        <div className={styles.matchHeader}>
-                          <div>
-                            <p className={styles.matchName}>{match.name}</p>
-                            <p className={styles.matchDetails}>
-                              Strengths: {match.strengths.join(", ")} | Difficulties: {match.difficulties.join(", ")}
-                            </p>
-                          </div>
-                          <span className={`${styles.reliabilityBadge} ${styles.reliabilityHigh}`}>
-                            Reliability: 95%
-                          </span>
-                        </div>
-                        <button className={styles.connectBtn}>Connect</button>
-                      </div>
-                    </div>
-                  ))}
-                </div> */}
-
               </div>
             </section>
 
